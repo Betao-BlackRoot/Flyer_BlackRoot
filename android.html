@@ -6,18 +6,18 @@
   <title>Experiência Black | Android</title>
   <meta name="description" content="Versão Android da landing Experiência Black." />
   <meta name="theme-color" content="#050505" />
-  <link rel="stylesheet" href="css/android.css?v=1.2.1-android-clean" />
+  <link rel="stylesheet" href="css/android.css?v=1.3.0-android-flow" />
 </head>
 <body class="android-page">
   <main class="android-main" aria-label="Landing Experiência Black versão Android">
     <section class="android-stage" id="flyerFrame">
 
-      <section class="android-hero" aria-label="Experiência Black">
-        <img class="android-bg-img" src="assets/flyer.jpg" alt="Flyer oficial Experiência Black" draggable="false" />
-        <div class="android-vignette" aria-hidden="true"></div>
+      <section class="android-hero-card" aria-label="Experiência Black">
+        <img class="android-hero-img" src="assets/mobile-hero.jpg" alt="Flyer oficial Experiência Black" draggable="false" />
+        <div class="android-hero-shade" aria-hidden="true"></div>
         <canvas id="blackrootSpectrum" class="android-spectrum" aria-hidden="true"></canvas>
 
-        <div class="flyer-inner-title android-inner-title" aria-hidden="true">
+        <div class="android-inner-title" aria-hidden="true">
           <span>★</span><strong>EXPERIÊNCIA BLACK</strong><span>★</span>
         </div>
 
@@ -25,17 +25,17 @@
           <span class="ao-vivo-dot"></span>
           <strong id="aoVivoText">PAUSADO</strong>
         </div>
+      </section>
 
-        <div class="countdown-box android-countdown" id="countdownBox" aria-label="Contagem regressiva para a estreia">
-          <span class="countdown-kicker">FALTAM</span>
-          <div class="countdown-grid">
-            <div class="countdown-item"><strong id="countDays">00</strong><small>DIAS</small></div>
-            <div class="countdown-item"><strong id="countHours">00</strong><small>HORAS</small></div>
-            <div class="countdown-item"><strong id="countMinutes">00</strong><small>MIN</small></div>
-            <div class="countdown-item"><strong id="countSeconds">00</strong><small>SEG</small></div>
-          </div>
-          <div class="countdown-date">12/07 <span>12HS</span></div>
+      <section class="countdown-box android-countdown-card" id="countdownBox" aria-label="Contagem regressiva para a estreia">
+        <span class="countdown-kicker">FALTAM</span>
+        <div class="countdown-grid">
+          <div class="countdown-item"><strong id="countDays">00</strong><small>DIAS</small></div>
+          <div class="countdown-item"><strong id="countHours">00</strong><small>HORAS</small></div>
+          <div class="countdown-item"><strong id="countMinutes">00</strong><small>MIN</small></div>
+          <div class="countdown-item"><strong id="countSeconds">00</strong><small>SEG</small></div>
         </div>
+        <div class="countdown-date">12/07 <span>12HS</span></div>
       </section>
 
       <nav class="flyer-choice-menu android-choice-menu open" id="flyerChoiceMenu" aria-label="Controles de áudio">
@@ -44,7 +44,7 @@
         <button class="flyer-choice-btn is-pause" id="choicePauseBtn" type="button">Reprise</button>
       </nav>
 
-      <section class="android-schedule-zone" aria-label="Programação e volume">
+      <section class="android-program-card" aria-label="Programação e volume">
         <div class="sunday-mini sunday-card-image android-sunday" aria-label="Todos os domingos a partir do meio-dia">
           <img src="assets/todos-os-domingos.png" alt="Todos os domingos a partir do meio-dia" draggable="false" />
         </div>
@@ -54,8 +54,12 @@
         </div>
       </section>
 
+      <div class="android-genre-strip" aria-label="Gêneros musicais">
+        CHARME - R&amp;B - SOUL - SAMBA ROCK - FLASH BACK - HIP HOP
+      </div>
+
       <footer class="android-footer" aria-label="Links e redes sociais">
-        <div class="android-app-block">
+        <section class="android-app-block" aria-label="Aplicativos">
           <img class="text-ouca-app" src="assets/text-ouca-pelo-app.png" alt="Ouça Pelo App" draggable="false" />
           <div class="android-app-row">
             <button class="float-link float-radios logo-button" type="button" data-link="appRadios" aria-label="Abrir Radios.com">
@@ -70,14 +74,19 @@
               </button>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="brand-footer-text" aria-label="www.radioblackinlove.com - A Casa da Black Music">
-          <span class="brand-footer-site">www.radioblackinlove.com</span>
-          <span class="brand-footer-slogan">A Casa da Black Music</span>
-        </div>
+        <section class="android-brand-block" aria-label="Identidade da rádio">
+          <div class="brand-footer-text" aria-label="www.radioblackinlove.com - A Casa da Black Music">
+            <span class="brand-footer-site">www.radioblackinlove.com</span>
+            <span class="brand-footer-slogan">A Casa da Black Music</span>
+          </div>
+          <button class="float-link float-site logo-button site-logo-button android-logo" type="button" data-link="site" aria-label="Abrir site Black in Love">
+            <img class="float-img img-site" src="assets/black-in-love-logo.png" alt="Black In Love" />
+          </button>
+        </section>
 
-        <div class="android-social-row">
+        <section class="android-social-row" aria-label="Redes sociais">
           <button class="float-link float-facebook icon-only" type="button" data-link="facebook" aria-label="Abrir Facebook">
             <img class="float-img social-img" src="assets/facebook-official.png" alt="Facebook" />
           </button>
@@ -90,11 +99,7 @@
           <button class="float-link float-youtube icon-only" type="button" data-link="youtube" aria-label="Abrir YouTube">
             <img class="float-img social-img" src="assets/youtube-official.png" alt="YouTube" />
           </button>
-        </div>
-
-        <button class="float-link float-site logo-button site-logo-button android-logo" type="button" data-link="site" aria-label="Abrir site Black in Love">
-          <img class="float-img img-site" src="assets/black-in-love-logo.png" alt="Black In Love" />
-        </button>
+        </section>
       </footer>
 
       <button class="hotspot hotspot-vinyl" id="vinylHotspot" type="button" aria-label="Abrir opções de áudio"><span class="vinyl-led"></span></button>
@@ -103,7 +108,8 @@
 
   <audio id="introAudio" src="assets/audio/chamada.mp3" preload="auto"></audio>
   <audio id="streamAudio" preload="none"></audio>
-  <iframe id="repriseFrame" title="Reprise Experiência Black" src="https://www.youtube.com/embed/hylxoxVXkeM?enablejsapi=1&playsinline=1" allow="autoplay; encrypted-media" style="position:absolute;width:1px;height:1px;left:-9999px;top:-9999px;border:0;"></iframe>
-  <script src="js/app.js?v=1.2.1-android-clean"></script>
+  <iframe id="repriseFrame" title="Reprise Experiência Black" src="about:blank" allow="autoplay; encrypted-media" style="position:absolute;width:1px;height:1px;left:-9999px;top:-9999px;border:0;"></iframe>
+  <script src="js/config.js?v=1.3.0"></script>
+  <script src="js/app.js?v=1.3.0-android-flow"></script>
 </body>
 </html>
