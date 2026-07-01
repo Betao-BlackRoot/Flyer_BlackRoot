@@ -22,31 +22,28 @@
    1) CONFIGURAÇÕES PRINCIPAIS
    ========================================================= */
 
-// Configurações externas. Para alterar links/textos sem mexer no código principal, edite js/config.js
-const BLACK_CONFIG = window.BLACK_CONFIG || {};
-
 // Link do stream da rádio. É esse endereço que toca quando o usuário escolhe "Rádio".
-const STREAM = BLACK_CONFIG.streamUrl || "https://hts02.brascast.com:9890/live";
+const STREAM = "https://hts02.brascast.com:9890/live";
 
 // Controle manual de status da rádio.
 // online  = tenta tocar a rádio normalmente.
 // offline = não tenta tocar; abre o link alternativo radioOffline.
-const RADIO_STATUS = BLACK_CONFIG.radioStatus || "online";
+const RADIO_STATUS = "online";
 
 /*
   Data da estreia usada no contador.
   ATENÇÃO: aqui o mês é mês normal. Julho = 7.
 */
-const CONFIG_ESTREIA = Object.assign({
+const CONFIG_ESTREIA = {
   ano: 2026,
   mes: 7,
   dia: 12,
   hora: 12,
   minuto: 0
-}, BLACK_CONFIG.estreia || {});
+};
 
 // Links oficiais dos botões flutuantes do flyer.
-const LINKS = Object.assign({
+const LINKS = {
   facebook: "https://www.facebook.com/radioblackinlove/",
   instagram: "https://www.instagram.com/radioblackinl",
   whatsapp: "https://chat.whatsapp.com/HxEVPDog7xh9J8iu4cVvtJ",
@@ -56,9 +53,8 @@ const LINKS = Object.assign({
   appAndroid: "https://play.google.com/store/apps/details?id=br.com.radios.radiosmobile.radiosnet",
   appApple: "https://apps.apple.com/br/app/radiosnet/id1089290449",
   radioOffline: "https://www.youtube.com/playlist?list=PLH0Y4fXuozBG1BmItoDSBV-KEoTwxWqSC",
-  chamadaDestino: "https://www.youtube.com/watch?v=hylxoxVXkeM",
-  reprise: "https://www.youtube.com/watch?v=hylxoxVXkeM&list=PLH0Y4fXuozBG1BmItoDSBV-KEoTwxWqSC"
-}, BLACK_CONFIG.links || {});
+  chamadaDestino: "https://www.youtube.com/watch?v=hylxoxVXkeM"
+};
 
 /* =========================================================
    2) FUNÇÕES CURTAS DE PROTEÇÃO
@@ -1698,7 +1694,7 @@ function pausarTudo() {
    para playlist/live é direcionar o usuário ao YouTube.
    ========================================================= */
 (function () {
-  const LINK_REPRISE_YOUTUBE = (window.BLACK_CONFIG && window.BLACK_CONFIG.links && window.BLACK_CONFIG.links.reprise) || (typeof LINKS !== "undefined" && LINKS.reprise) || "https://www.youtube.com/watch?v=hylxoxVXkeM&list=PLH0Y4fXuozBG1BmItoDSBV-KEoTwxWqSC";
+  const LINK_REPRISE_YOUTUBE = "https://www.youtube.com/watch?v=hylxoxVXkeM&list=PLH0Y4fXuozBG1BmItoDSBV-KEoTwxWqSC";
 
   function pegarRev16(id) {
     return document.getElementById(id);
@@ -1897,4 +1893,256 @@ function pausarTudo() {
     });
     a.addEventListener("ended", limparAtivos);
   });
+})();
+
+
+/* =========================================================
+   MASTER v1.1.2 - CONTROLE FINAL RADIO / CHAMADA / REPRISE
+   Escopo: somente os 3 botões do vinil.
+   - Rádio e Chamada desligam um ao outro automaticamente.
+   - Chamada usa o elemento <audio id="introAudio"> para acionar o spectrum.
+   - Reprise continua abrindo playlist/live do YouTube em nova aba.
+   ========================================================= */
+(function () {
+  const CHAMADA_SRC_FINAL = "assets/audio/chamada.mp3";
+  const REPRISE_LINK_FINAL = "https://www.youtube.com/watch?v=hylxoxVXkeM&list=PLH0Y4fXuozBG1BmItoDSBV-KEoTwxWqSC";
+
+  function el(id) { return document.getElementById(id); }
+
+  function trocarBotaoFinal(id) {
+    const antigo = el(id);
+    if (!antigo || !antigo.parentNode) return null;
+    const novo = antigo.cloneNode(true);
+    antigo.parentNode.replaceChild(novo, antigo);
+    return novo;
+  }
+
+  const btnRadioFinal = trocarBotaoFinal("choiceRadioBtn");
+  const btnChamadaFinal = trocarBotaoFinal("choiceIntroBtn");
+  const btnRepriseFinal = trocarBotaoFinal("choicePauseBtn");
+  const audioRadioFinal = el("streamAudio");
+  const audioChamadaFinal = el("introAudio");
+  const iframeRepriseFinal = el("repriseFrame");
+
+  let modoFinal = "pausado";
+
+  function fecharMenuFinal() {
+    try { if (typeof fecharMenuFlyer === "function") fecharMenuFlyer(); } catch (e) {}
+    const menu = el("flyerChoiceMenu");
+    if (menu) menu.classList.remove("open");
+  }
+
+  function limparBotoesFinal() {
+    [btnRadioFinal, btnChamadaFinal, btnRepriseFinal].forEach(function (botao) {
+      if (botao) botao.classList.remove("is-active");
+    });
+  }
+
+  function ativarBotaoFinal(botao) {
+    limparBotoesFinal();
+    if (botao) botao.classList.add("is-active");
+  }
+
+  function aplicarVolumeFinal(audio) {
+    if (!audio) return;
+    const flyerVolume = el("flyerVolumeControl");
+    const volumeGeral = el("volumeControl");
+    const valor = flyerVolume ? Number(flyerVolume.value) : (volumeGeral ? Number(volumeGeral.value) : 0.9);
+    audio.volume = Number.isFinite(valor) ? valor : 0.9;
+    audio.muted = false;
+  }
+
+  function pararRepriseFinal() {
+    try {
+      if (iframeRepriseFinal && iframeRepriseFinal.contentWindow) {
+        iframeRepriseFinal.contentWindow.postMessage(
+          JSON.stringify({ event: "command", func: "pauseVideo", args: [] }),
+          "*"
+        );
+      }
+    } catch (e) {}
+    try { if (iframeRepriseFinal) iframeRepriseFinal.setAttribute("src", "about:blank"); } catch (e) {}
+    try { repriseTocando = false; } catch (e) {}
+  }
+
+  function pausarRadioFinal() {
+    try { if (audioRadioFinal) audioRadioFinal.pause(); } catch (e) {}
+  }
+
+  function pausarChamadaFinal() {
+    try { if (audioChamadaFinal) audioChamadaFinal.pause(); } catch (e) {}
+  }
+
+  function uiPausadoFinal() {
+    modoFinal = "pausado";
+    try { estadoAtual = "pausado"; } catch (e) {}
+    try { audioAtual = null; } catch (e) {}
+    try { if (typeof setPlayerPlaying === "function") setPlayerPlaying(false); } catch (e) {}
+    try { if (typeof atualizarIconePlay === "function") atualizarIconePlay(false); } catch (e) {}
+    try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("pausado"); } catch (e) {}
+    try { if (typeof setConnection === "function") setConnection("PAUSADO", "offline"); } catch (e) {}
+    try { if (typeof atualizarPlayerOpcional === "function") atualizarPlayerOpcional("Experiência Black", "Reprodução pausada.", "PAUSADO", "status-badge"); } catch (e) {}
+    limparBotoesFinal();
+  }
+
+  function pausarTudoFinal() {
+    pausarRadioFinal();
+    pausarChamadaFinal();
+    pararRepriseFinal();
+    uiPausadoFinal();
+    fecharMenuFinal();
+  }
+
+  function tocarRadioFinal() {
+    if (!audioRadioFinal) return;
+
+    if (modoFinal === "radio" && !audioRadioFinal.paused) {
+      pausarTudoFinal();
+      return;
+    }
+
+    modoFinal = "radio";
+    try { estadoAtual = "radio"; audioAtual = audioRadioFinal; } catch (e) {}
+
+    pausarChamadaFinal();
+    pararRepriseFinal();
+
+    try {
+      if (typeof prepararStream === "function") prepararStream();
+      else if (!audioRadioFinal.src || !audioRadioFinal.src.includes(STREAM)) {
+        audioRadioFinal.src = STREAM;
+        audioRadioFinal.load();
+      }
+    } catch (e) {}
+
+    aplicarVolumeFinal(audioRadioFinal);
+    ativarBotaoFinal(btnRadioFinal);
+    try { if (typeof setPlayerPlaying === "function") setPlayerPlaying(true); } catch (e) {}
+    try { if (typeof atualizarIconePlay === "function") atualizarIconePlay(true); } catch (e) {}
+    try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("conectando"); } catch (e) {}
+    try { if (typeof setConnection === "function") setConnection("CONECTANDO", "pending"); } catch (e) {}
+    try { if (typeof atualizarPlayerOpcional === "function") atualizarPlayerOpcional("Rádio Black In Love", "Conectando transmissão ao vivo...", "CONECTANDO", "status-badge"); } catch (e) {}
+    fecharMenuFinal();
+
+    const playPromise = audioRadioFinal.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(function () {
+        uiPausadoFinal();
+        try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("erro"); } catch (e) {}
+        try { if (typeof atualizarPlayerOpcional === "function") atualizarPlayerOpcional("Rádio", "Não foi possível iniciar a rádio. Clique novamente.", "ERRO RÁDIO", "status-badge warning"); } catch (e) {}
+      });
+    }
+  }
+
+  function tocarChamadaFinal() {
+    if (!audioChamadaFinal) return;
+
+    if (modoFinal === "chamada" && !audioChamadaFinal.paused) {
+      pausarTudoFinal();
+      return;
+    }
+
+    modoFinal = "chamada";
+    try { estadoAtual = "chamada"; audioAtual = audioChamadaFinal; } catch (e) {}
+
+    pausarRadioFinal();
+    pararRepriseFinal();
+
+    try {
+      audioChamadaFinal.pause();
+      if (!audioChamadaFinal.getAttribute("src") || !audioChamadaFinal.getAttribute("src").includes(CHAMADA_SRC_FINAL)) {
+        audioChamadaFinal.setAttribute("src", CHAMADA_SRC_FINAL);
+      }
+      audioChamadaFinal.load();
+      audioChamadaFinal.currentTime = 0;
+    } catch (e) {}
+
+    aplicarVolumeFinal(audioChamadaFinal);
+    ativarBotaoFinal(btnChamadaFinal);
+    try { if (typeof setPlayerPlaying === "function") setPlayerPlaying(true); } catch (e) {}
+    try { if (typeof atualizarIconePlay === "function") atualizarIconePlay(true); } catch (e) {}
+    try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("vinheta"); } catch (e) {}
+    try { if (typeof setConnection === "function") setConnection("CHAMADA", "connected"); } catch (e) {}
+    try { if (typeof atualizarPlayerOpcional === "function") atualizarPlayerOpcional("Chamada de abertura", "Vinheta oficial em reprodução.", "CHAMADA", "status-badge live"); } catch (e) {}
+    fecharMenuFinal();
+
+    const playPromise = audioChamadaFinal.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(function () {
+        uiPausadoFinal();
+        try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("erro"); } catch (e) {}
+        try { if (typeof atualizarPlayerOpcional === "function") atualizarPlayerOpcional("Chamada", "Não foi possível tocar a vinheta. Clique novamente.", "ERRO CHAMADA", "status-badge warning"); } catch (e) {}
+      });
+    }
+  }
+
+  function abrirRepriseFinal() {
+    pausarRadioFinal();
+    pausarChamadaFinal();
+    pararRepriseFinal();
+    modoFinal = "reprise";
+    try { estadoAtual = "reprise"; audioAtual = null; } catch (e) {}
+    ativarBotaoFinal(btnRepriseFinal);
+    try { if (typeof setPlayerPlaying === "function") setPlayerPlaying(false); } catch (e) {}
+    try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("pausado"); } catch (e) {}
+    fecharMenuFinal();
+    window.open(REPRISE_LINK_FINAL, "_blank", "noopener,noreferrer");
+  }
+
+  if (btnRadioFinal) {
+    btnRadioFinal.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      tocarRadioFinal();
+    }, true);
+  }
+
+  if (btnChamadaFinal) {
+    btnChamadaFinal.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      tocarChamadaFinal();
+    }, true);
+  }
+
+  if (btnRepriseFinal) {
+    btnRepriseFinal.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      abrirRepriseFinal();
+    }, true);
+  }
+
+  if (audioRadioFinal) {
+    audioRadioFinal.addEventListener("playing", function () {
+      if (modoFinal !== "radio") return;
+      try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("live"); } catch (e) {}
+      try { if (typeof setConnection === "function") setConnection("AO VIVO", "connected"); } catch (e) {}
+      ativarBotaoFinal(btnRadioFinal);
+    });
+
+    audioRadioFinal.addEventListener("pause", function () {
+      if (modoFinal === "radio") uiPausadoFinal();
+    });
+  }
+
+  if (audioChamadaFinal) {
+    audioChamadaFinal.addEventListener("playing", function () {
+      if (modoFinal !== "chamada") return;
+      try { if (typeof atualizarSeloAoVivo === "function") atualizarSeloAoVivo("vinheta"); } catch (e) {}
+      try { if (typeof setConnection === "function") setConnection("CHAMADA", "connected"); } catch (e) {}
+      ativarBotaoFinal(btnChamadaFinal);
+    });
+
+    audioChamadaFinal.addEventListener("pause", function () {
+      if (modoFinal === "chamada") uiPausadoFinal();
+    });
+
+    audioChamadaFinal.addEventListener("ended", function () {
+      if (modoFinal === "chamada") uiPausadoFinal();
+    });
+  }
 })();
