@@ -1,0 +1,16 @@
+MASTER v1.2 - PC + Android
+
+REGRA PRESERVADA:
+- O arquivo original de PC foi preservado em: pc_original_regra.html
+- O index.html continua abrindo o layout de PC para computador/notebook.
+- Em celular/Android, o index.html redireciona automaticamente para android.html.
+
+ARQUIVOS PRINCIPAIS:
+- index.html = entrada principal do GitHub Pages com detecção mobile.
+- pc_original_regra.html = cópia preservada do layout original aprovado para PC.
+- android.html = nova versão Android 9:16 criada separadamente.
+- css/android.css = CSS exclusivo da versão Android.
+- js/app.js = mantém a lógica de Rádio, Chamada, Reprise, contador e spectrum.
+
+FORÇAR VERSÃO PC NO CELULAR:
+- Abra o site com ?pc=1 no final do link.

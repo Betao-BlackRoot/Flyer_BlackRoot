@@ -25,19 +25,6 @@
   <!-- Faz o site se ajustar ao tamanho da tela, principalmente celular. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
-  <!-- REDIRECIONAMENTO MOBILE: PC preservado; Android abre versão própria. -->
-  <script>
-    (function () {
-      var isMobileUA = /Android|iPhone|iPod|Windows Phone|Mobile/i.test(navigator.userAgent || "");
-      var isNarrowPortrait = window.innerWidth <= 820 && window.innerHeight > window.innerWidth;
-      var forcePC = new URLSearchParams(window.location.search).get("pc") === "1";
-      if (!forcePC && (isMobileUA || isNarrowPortrait) && !/android\.html$/i.test(location.pathname)) {
-        location.replace("android.html");
-      }
-    })();
-  </script>
-
   <!-- Título que aparece na aba do navegador. -->
   <title>Experiência Black | Betão BlackRoot</title>
 
