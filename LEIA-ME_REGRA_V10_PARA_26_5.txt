@@ -1,0 +1,20 @@
+REGRA APLICADA
+
+Base visual e arquitetura: Landing Experience Black V26.5.
+Doador funcional/visual pontual: V10.
+
+Importado do V10 somente:
+- relógio/data de estreia em contagem regressiva;
+- selo/status AO VIVO no flyer;
+- efeito visual do vinil com brilho/LED e movimento de grooves.
+
+Não alterado:
+- rodapé;
+- logos;
+- links;
+- player;
+- composição geral;
+- flyer base;
+- caixa Todos os Domingos.
+
+Observação: as fontes .ttf não foram empacotadas.

@@ -1,0 +1,35 @@
+CORREÇÃO NATTHAN - LED GIRANDO NA BORDA
+
+O problema era que o último efeito usava conic-gradient girando uma camada gigante.
+Na caixa muito comprida do EXPERIÊNCIA BLACK, isso acabava parecendo só uma borda acesa/parada.
+
+Foi adicionado no final do css/style.css um bloco chamado:
+CORREÇÃO NATTHAN - LED REAL CORRENDO EM VOLTA DA BORDA
+
+Ele faz o efeito correto usando 4 luzes animadas:
+- cima
+- direita
+- baixo
+- esquerda
+
+Onde mexer:
+
+1) Velocidade do LED:
+animation: ledCorrendoBordaNatthan 1.05s linear infinite !important;
+
+Mais rápido:
+animation: ledCorrendoBordaNatthan 0.65s linear infinite !important;
+
+Mais lento:
+animation: ledCorrendoBordaNatthan 1.8s linear infinite !important;
+
+2) Grossura da borda:
+inset: 3px !important;
+
+Borda mais grossa:
+inset: 2px !important;
+
+Borda mais fina:
+inset: 4px !important;
+
+Depois de salvar no VS Code, atualize o navegador com Ctrl + F5.
