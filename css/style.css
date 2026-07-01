@@ -5156,3 +5156,47 @@ body.playing .vinyl-led {
     font-size: 12px !important;
   }
 }
+
+/* =========================================================
+   MASTER v1.1.3 - CORRECAO MOBILE / MASCARA DO VINIL
+   Escopo cirurgico:
+   - Remove a mascara duplicada que aparecia como uma mao no rodape no celular.
+   - Mantem a guarda real do vinil presa dentro do flyer-stage.
+   - Nao altera audio, botoes, links, rodape ou layout desktop.
+   ========================================================= */
+
+/* A mascara duplicada criada no frame ficava baseada na tela 9:16,
+   por isso descia e aparecia no rodape no celular. Desligada. */
+.flyer-frame::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  clip-path: none !important;
+}
+
+/* A guarda correta continua sendo a imagem real dentro do flyer-stage,
+   com proporcao do flyer 1080x1350. */
+.vinyl-static-guard {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  z-index: 31 !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 760px) and (orientation: portrait) {
+  /* Mobile 9:16 sem criar camada falsa no rodape. */
+  .flyer-frame::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .vinyl-static-guard {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+}
