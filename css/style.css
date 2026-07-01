@@ -5800,3 +5800,149 @@ body.playing .vinyl-led {
   .sunday-mini,
   .flyer-volume-panel { width: 47% !important; }
 }
+
+/* ==========================================================
+   MASTER v1.1.6 - MOBILE CLEAN FIX
+   Objetivo: manter desktop intacto e corrigir somente celular.
+   - Botões deixam de colar com o contador.
+   - Todos os Domingos + volume ficam menores e fora da faixa vermelha.
+   - Rodapé ganha mais respiro.
+   ========================================================== */
+@media (max-width: 760px) and (orientation: portrait) {
+  /* Mantém a imagem 9:16, mas evita sensação de bloco espremido. */
+  .flyer-frame {
+    height: calc(100vw * 16 / 9) !important;
+    min-height: calc(100vw * 16 / 9) !important;
+    overflow: hidden !important;
+  }
+
+  /* Contador um pouco menor e mais no alto para liberar área de controles. */
+  .countdown-box {
+    left: 4.0% !important;
+    top: 24.2% !important;
+    width: 29.5% !important;
+    min-width: 104px !important;
+    max-width: 134px !important;
+    padding: 7px !important;
+  }
+
+  .countdown-item {
+    min-height: clamp(33px, 9.3vw, 44px) !important;
+  }
+
+  .countdown-item strong { font-size: clamp(20px, 6.8vw, 29px) !important; }
+  .countdown-date { font-size: clamp(18px, 5.7vw, 26px) !important; }
+
+  /* Controles em faixa própria sobre o vinil, com respiro. */
+  .flyer-choice-menu {
+    left: 50% !important;
+    top: 56.9% !important;
+    width: 86% !important;
+    gap: clamp(7px, 2.2vw, 11px) !important;
+    transform: translateX(-50%) !important;
+    z-index: 112 !important;
+  }
+
+  .flyer-choice-btn,
+  .flyer-choice-btn.is-pause {
+    min-height: clamp(34px, 9.0vw, 43px) !important;
+    font-size: clamp(12px, 3.55vw, 16px) !important;
+    padding: 6px 4px !important;
+  }
+
+  /* Agenda + volume reduzidos e acima da faixa vermelha do rodapé. */
+  .sunday-mini {
+    left: 50% !important;
+    top: 63.6% !important;
+    width: 38% !important;
+    max-width: 178px !important;
+    transform: translateX(-50%) !important;
+    z-index: 86 !important;
+  }
+
+  .flyer-volume-panel {
+    left: 50% !important;
+    top: 69.0% !important;
+    width: 38% !important;
+    max-width: 178px !important;
+    height: clamp(18px, 4.8vw, 24px) !important;
+    padding: 2px 5px !important;
+    transform: translateX(-50%) !important;
+    z-index: 88 !important;
+  }
+
+  .flyer-volume-btn {
+    width: clamp(16px, 4.5vw, 20px) !important;
+    height: clamp(16px, 4.5vw, 20px) !important;
+    font-size: 9px !important;
+  }
+
+  .flyer-volume-range { height: 5px !important; }
+
+  /* Rodapé mais baixo e menor para não colar na faixa vermelha. */
+  .text-ouca-app {
+    left: 6.0% !important;
+    top: 78.5% !important;
+    width: 23% !important;
+  }
+
+  .float-radios {
+    left: 6.0% !important;
+    top: 83.0% !important;
+    width: clamp(36px, 10vw, 48px) !important;
+    height: clamp(36px, 10vw, 48px) !important;
+  }
+
+  .float-android,
+  .float-apple {
+    left: 19.0% !important;
+    width: 26% !important;
+    min-width: 84px !important;
+    max-width: 122px !important;
+    height: clamp(23px, 6.0vw, 30px) !important;
+  }
+
+  .float-android { top: 82.4% !important; }
+  .float-apple { top: 85.7% !important; }
+
+  .brand-footer-text {
+    left: 50% !important;
+    top: 78.5% !important;
+    width: 38% !important;
+  }
+
+  .brand-footer-site { font-size: clamp(9px, 2.65vw, 13px) !important; }
+  .brand-footer-slogan { font-size: clamp(5.8px, 1.65vw, 8px) !important; }
+
+  .float-facebook,
+  .float-instagram,
+  .float-whatsapp,
+  .float-youtube {
+    top: 86.1% !important;
+    width: clamp(34px, 9.5vw, 45px) !important;
+    height: clamp(34px, 9.5vw, 45px) !important;
+  }
+
+  .float-facebook { left: 36.0% !important; }
+  .float-instagram { left: 47.0% !important; }
+  .float-whatsapp { left: 58.0% !important; }
+  .float-youtube { left: 69.0% !important; }
+
+  .float-site {
+    left: 84.0% !important;
+    top: 81.0% !important;
+    width: clamp(62px, 16.5vw, 84px) !important;
+    height: clamp(62px, 16.5vw, 84px) !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  .flyer-choice-menu { width: 88% !important; gap: 5px !important; }
+  .flyer-choice-btn,
+  .flyer-choice-btn.is-pause {
+    min-height: 32px !important;
+    font-size: 11.5px !important;
+  }
+  .sunday-mini { width: 39% !important; }
+  .flyer-volume-panel { width: 39% !important; }
+}
