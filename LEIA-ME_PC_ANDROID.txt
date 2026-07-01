@@ -1,16 +1,19 @@
-MASTER v1.2 - PC + Android
+LANDING EXPERIENCE BLACK - v1.2.1 PC + ANDROID
 
 REGRA PRESERVADA:
-- O arquivo original de PC foi preservado em: pc_original_regra.html
-- O index.html continua abrindo o layout de PC para computador/notebook.
-- Em celular/Android, o index.html redireciona automaticamente para android.html.
+- O layout de PC continua preservado em pc_original_regra.html e usando css/style.css.
+- A versão Android fica separada em android.html e css/android.css.
 
-ARQUIVOS PRINCIPAIS:
-- index.html = entrada principal do GitHub Pages com detecção mobile.
-- pc_original_regra.html = cópia preservada do layout original aprovado para PC.
-- android.html = nova versão Android 9:16 criada separadamente.
-- css/android.css = CSS exclusivo da versão Android.
-- js/app.js = mantém a lógica de Rádio, Chamada, Reprise, contador e spectrum.
+COMO FUNCIONA:
+- index.html detecta celular/tablet estreito e redireciona para android.html.
+- No PC, index.html abre o layout original aprovado.
+- Para forçar PC no celular: adicione ?pc=1 no final do link.
 
-FORÇAR VERSÃO PC NO CELULAR:
-- Abra o site com ?pc=1 no final do link.
+ALTERAÇÃO v1.2.1:
+- Android deixou de tentar espremer o flyer de PC inteiro.
+- Android agora tem layout vertical próprio:
+  1. área hero/imagem;
+  2. botões Rádio / Chamada / Reprise em faixa própria;
+  3. Todos os Domingos + volume em bloco próprio;
+  4. rodapé mobile separado.
+- Desktop não foi alterado.
