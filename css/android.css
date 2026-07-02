@@ -725,3 +725,81 @@ body.android-page {
   .android-logo { width: 76px !important; height: 76px !important; min-width: 76px !important; max-width: 76px !important; min-height: 76px !important; max-height: 76px !important; }
   .android-social-row .icon-only { width: 44px !important; height: 44px !important; min-width: 44px !important; min-height: 44px !important; }
 }
+
+
+/* =========================================================
+   REV 1.3.3 - AJUSTE FINAL SOMENTE GOOGLE PLAY / APP STORE
+   REGRA: tudo travado. Só os dois selos foram reduzidos e
+   centralizados para ficarem 100% visíveis no Android.
+   ========================================================= */
+.android-store-stack {
+  width: 132px !important;
+  max-width: 132px !important;
+  min-width: 132px !important;
+  gap: 8px !important;
+}
+
+.android-store-stack .image-badge,
+.android-store-stack .float-android,
+.android-store-stack .float-apple {
+  width: 132px !important;
+  max-width: 132px !important;
+  min-width: 132px !important;
+  height: 30px !important;
+  max-height: 30px !important;
+  min-height: 30px !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  border-radius: 9px !important;
+}
+
+.android-store-stack .badge-img {
+  width: 118px !important;
+  max-width: 118px !important;
+  height: auto !important;
+  max-height: 24px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: static !important;
+  transform: none !important;
+}
+
+.android-app-row {
+  grid-template-columns: 72px 132px !important;
+  width: 224px !important;
+  max-width: 74vw !important;
+}
+
+@media (max-width: 370px) {
+  .android-app-row {
+    grid-template-columns: 64px 124px !important;
+    width: 206px !important;
+  }
+  .android-store-stack {
+    width: 124px !important;
+    max-width: 124px !important;
+    min-width: 124px !important;
+  }
+  .android-store-stack .image-badge,
+  .android-store-stack .float-android,
+  .android-store-stack .float-apple {
+    width: 124px !important;
+    max-width: 124px !important;
+    min-width: 124px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+  }
+  .android-store-stack .badge-img {
+    width: 111px !important;
+    max-width: 111px !important;
+    max-height: 22px !important;
+  }
+}
