@@ -1,0 +1,27 @@
+PREVIEW DO LINK CORRIGIDO
+
+Foi criada uma imagem Open Graph otimizada:
+assets/preview-blackroot-og.jpg
+
+Tamanho:
+1200 x 630 px
+
+URL pública configurada:
+https://betao-blackroot.github.io/Flyer_BlackRoot/assets/preview-blackroot-og.jpg
+
+Título:
+BlackRoot
+
+Descrição:
+Clik para Experiência!
+
+Arquivos corrigidos:
+- index.html
+- android.html
+- pc_original_regra.html
+
+Após subir no GitHub, teste primeiro abrindo:
+https://betao-blackroot.github.io/Flyer_BlackRoot/assets/preview-blackroot-og.jpg
+
+Se essa imagem abrir no navegador, o arquivo foi publicado corretamente.
+WhatsApp/Facebook podem manter cache antigo por algumas horas.
