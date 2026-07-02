@@ -803,3 +803,121 @@ body.android-page {
     max-height: 22px !important;
   }
 }
+
+
+/* =========================================================
+   REV 1.3.4 - CORRECAO REAL SOMENTE DO BLOCO OUCA PELO APP
+   Objetivo: impedir sobreposicao dos selos Google Play/App Store
+   no Android. Tudo o resto permanece travado.
+   ========================================================= */
+.android-app-block {
+  gap: 12px !important;
+}
+
+.android-app-row {
+  width: min(100%, 290px) !important;
+  max-width: 290px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  flex-wrap: nowrap !important;
+  margin: 0 auto !important;
+}
+
+.android-app-row .logo-button.float-radios {
+  width: 74px !important;
+  min-width: 74px !important;
+  max-width: 74px !important;
+  height: 74px !important;
+  min-height: 74px !important;
+  max-height: 74px !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  flex: 0 0 74px !important;
+}
+
+.android-app-row .img-radios {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.android-store-stack {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  flex: 0 0 150px !important;
+}
+
+.android-store-stack .image-badge,
+.android-store-stack .float-android,
+.android-store-stack .float-apple {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  max-height: 42px !important;
+  padding: 4px 8px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+}
+
+.android-store-stack .badge-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  margin: 0 auto !important;
+  transform: none !important;
+}
+
+@media (max-width: 370px) {
+  .android-app-row {
+    width: min(100%, 270px) !important;
+    max-width: 270px !important;
+    gap: 12px !important;
+  }
+  .android-app-row .logo-button.float-radios {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
+    flex-basis: 68px !important;
+  }
+  .android-store-stack {
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    gap: 8px !important;
+    flex-basis: 140px !important;
+  }
+  .android-store-stack .image-badge,
+  .android-store-stack .float-android,
+  .android-store-stack .float-apple {
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+  }
+}
