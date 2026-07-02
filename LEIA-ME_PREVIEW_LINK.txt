@@ -1,0 +1,17 @@
+PREVIEW DO LINK - BLACKROOT
+
+Foi adicionada a imagem de prévia do link em:
+assets/preview-blackroot.png
+
+Foram adicionadas no HTML as tags Open Graph / Twitter Card em:
+- index.html
+- android.html
+- pc_original_regra.html
+
+TEXTO USADO:
+- Título: BlackRoot
+- Descrição: Clik para Experiência!
+
+IMPORTANTE:
+Se no futuro quiser máxima compatibilidade com WhatsApp/Facebook, você pode trocar o valor de og:image para a URL completa do arquivo publicado, por exemplo:
+https://SEU-DOMINIO/assets/preview-blackroot.png
