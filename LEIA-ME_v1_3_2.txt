@@ -1,0 +1,1 @@
+Versão 1.3.2: correção real do rodapé Android. PC preservado como REGRA. Apps, site/logo e redes sociais separados para evitar sobreposição no celular.

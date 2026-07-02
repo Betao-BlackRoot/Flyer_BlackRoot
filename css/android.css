@@ -520,3 +520,208 @@ body.android-page {
     font-size: 13px !important;
   }
 }
+
+
+/* =========================================================
+   REV 1.3.2 - RODAPÉ ANDROID LIMPO E TESTÁVEL
+   Correção real: separa Apps, site/logo e redes sociais para
+   impedir qualquer sobreposição no celular.
+   ========================================================= */
+.android-footer {
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 18px !important;
+  padding: 18px 18px 26px !important;
+}
+
+.android-app-block {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.android-app-block .text-ouca-app {
+  width: 168px !important;
+  max-width: 52vw !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto 2px !important;
+}
+
+.android-app-row {
+  width: 252px !important;
+  max-width: 78vw !important;
+  min-height: 76px !important;
+  display: grid !important;
+  grid-template-columns: 72px 148px !important;
+  gap: 10px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.android-app-row .logo-button {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  max-width: 72px !important;
+  min-height: 72px !important;
+  max-height: 72px !important;
+  margin: 0 !important;
+  padding: 5px !important;
+  position: static !important;
+  transform: none !important;
+  overflow: hidden !important;
+}
+
+.android-app-row .img-radios {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.android-store-stack {
+  width: 148px !important;
+  max-width: 148px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  z-index: 2 !important;
+}
+
+.android-store-stack .image-badge,
+.android-store-stack .float-android,
+.android-store-stack .float-apple {
+  width: 148px !important;
+  height: 31px !important;
+  min-width: 148px !important;
+  max-width: 148px !important;
+  min-height: 31px !important;
+  max-height: 31px !important;
+  margin: 0 !important;
+  padding: 2px 5px !important;
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  overflow: hidden !important;
+  border-radius: 9px !important;
+}
+
+.android-store-stack .badge-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  position: static !important;
+  transform: none !important;
+}
+
+.android-brand-block {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  gap: 12px !important;
+  margin: 2px 0 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.brand-footer-text {
+  width: 100% !important;
+  max-width: 330px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 4 !important;
+  line-height: 1.08 !important;
+}
+
+.brand-footer-site {
+  display: block !important;
+  font-size: clamp(15px, 4vw, 18px) !important;
+  line-height: 1.05 !important;
+  white-space: nowrap !important;
+}
+
+.brand-footer-slogan {
+  display: block !important;
+  font-size: clamp(9px, 2.5vw, 12px) !important;
+  line-height: 1.05 !important;
+}
+
+.android-logo {
+  width: 82px !important;
+  height: 82px !important;
+  min-width: 82px !important;
+  max-width: 82px !important;
+  min-height: 82px !important;
+  max-height: 82px !important;
+  padding: 6px !important;
+  margin: 0 auto !important;
+  position: static !important;
+  transform: none !important;
+}
+
+.android-social-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.android-social-row .icon-only {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  margin: 0 !important;
+  position: static !important;
+  transform: none !important;
+}
+
+@media (max-width: 370px) {
+  .android-footer { padding-left: 14px !important; padding-right: 14px !important; gap: 16px !important; }
+  .android-app-row { width: 232px !important; grid-template-columns: 64px 136px !important; gap: 9px !important; }
+  .android-app-row .logo-button { width: 64px !important; height: 64px !important; min-width: 64px !important; max-width: 64px !important; min-height: 64px !important; max-height: 64px !important; }
+  .android-store-stack { width: 136px !important; max-width: 136px !important; gap: 6px !important; }
+  .android-store-stack .image-badge,
+  .android-store-stack .float-android,
+  .android-store-stack .float-apple { width: 136px !important; height: 29px !important; min-width: 136px !important; max-width: 136px !important; min-height: 29px !important; max-height: 29px !important; }
+  .android-logo { width: 76px !important; height: 76px !important; min-width: 76px !important; max-width: 76px !important; min-height: 76px !important; max-height: 76px !important; }
+  .android-social-row .icon-only { width: 44px !important; height: 44px !important; min-width: 44px !important; min-height: 44px !important; }
+}
