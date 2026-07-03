@@ -120,8 +120,8 @@ body.android-page {
   position: absolute;
   left: auto;
   top: auto;
-  right: 24px;
-  bottom: 2px;
+  right: 22px;
+  bottom: -10px;
   z-index: 6;
   display: inline-flex;
   align-items: center;
@@ -925,7 +925,39 @@ body.android-page {
 }
 
 
-/* REV 1.3.15 - REGRA: cabeçalho restaurado da base trancada e somente a caixa de status um pouco mais baixa. */
+/* REV 1.3.16 - REGRA restaurada: cabeçalho da base correta + slogan faltante + caixa de status um pouco mais baixa. */
+.android-tagline {
+  position: absolute;
+  top: 15.6%;
+  right: 5.4%;
+  width: 29%;
+  min-height: 16px;
+  height: 16px;
+  padding: 0 3px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(0,0,0,.56);
+  border: 1px solid rgba(245,190,71,.28);
+  box-shadow: 0 0 14px rgba(255,184,46,.20), inset 0 0 10px rgba(255,184,46,.08);
+  pointer-events: none;
+}
+.android-tagline span {
+  display: block;
+  width: 100%;
+  color: #ffe6a7;
+  font-size: clamp(6px, 1.9vw, 9px);
+  font-weight: 950;
+  letter-spacing: .14em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(255, 214, 125, .42);
+  white-space: nowrap;
+}
 @media (max-width: 430px) {
-  .ao-vivo-stamp { right: 20px; bottom: 0; }
+  .ao-vivo-stamp { right: 20px; bottom: -12px; }
+  .android-tagline { top: 15.6%; right: 5.3%; width: 31%; height: 15px; min-height: 15px; }
 }
