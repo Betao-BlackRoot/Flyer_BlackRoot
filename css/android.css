@@ -1,0 +1,522 @@
+/* =========================================================
+   ANDROID PROFISSIONAL 9:16 - v1.3.0
+   REGRA: PC preservado. Este CSS controla somente android.html.
+   Objetivo: mobile-first real, com blocos separados e rolagem vertical.
+   Não espreme o flyer de PC.
+   ========================================================= */
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #000; }
+body.android-page {
+  min-height: 100svh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(244, 185, 70, 0.17), transparent 36%),
+    radial-gradient(circle at 50% 82%, rgba(244, 185, 70, 0.12), transparent 48%),
+    linear-gradient(180deg, #030303 0%, #000 100%);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+.android-main {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) calc(22px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+}
+.android-stage {
+  position: relative;
+  width: min(100%, 460px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: clamp(18px, 4.8vw, 30px);
+  background:
+    linear-gradient(180deg, rgba(9,9,8,.99), rgba(0,0,0,.99));
+  box-shadow:
+    0 0 0 1px rgba(226, 178, 89, .38),
+    0 0 30px rgba(226, 178, 89, .23),
+    inset 0 0 42px rgba(0, 0, 0, .88);
+  isolation: isolate;
+}
+.android-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid rgba(226, 178, 89, .58);
+  box-shadow: inset 0 0 24px rgba(255, 187, 65, .18);
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* HERO: é somente capa visual. Contador e controles ficam fora, em blocos próprios. */
+.android-hero-card {
+  position: relative;
+  width: 100%;
+  height: clamp(350px, 95vw, 435px);
+  overflow: hidden;
+  flex: 0 0 auto;
+  background: #050505;
+}
+.android-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+  z-index: 0;
+  filter: saturate(1.08) contrast(1.06) brightness(.88);
+  pointer-events: none;
+}
+.android-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.00) 42%, rgba(0,0,0,.45) 82%, rgba(0,0,0,.96) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,.18) 100%);
+}
+.android-spectrum {
+  position: absolute;
+  left: 12%;
+  top: 19%;
+  width: 76%;
+  height: 13%;
+  z-index: 3;
+  opacity: .88;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.android-inner-title {
+  position: absolute;
+  left: 12%;
+  top: 4%;
+  width: 76%;
+  min-height: clamp(28px, 7.3vw, 40px);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .42em;
+  padding: .25rem .55rem;
+  color: #fff7d6;
+  background: rgba(0, 0, 0, .72);
+  border: 1px solid rgba(245, 190, 71, .78);
+  border-radius: 999px;
+  box-shadow: 0 0 15px rgba(255, 184, 46, .72), inset 0 0 10px rgba(255, 184, 46, .15);
+  text-shadow: 0 0 8px rgba(255, 209, 97, .78);
+  font-size: clamp(10px, 3.05vw, 15px);
+  letter-spacing: .20em;
+  white-space: nowrap;
+}
+.ao-vivo-stamp {
+  position: absolute;
+  left: 6%;
+  top: 14.5%;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  padding: .52rem .86rem;
+  border-radius: 12px;
+  transform: rotate(-8deg);
+  background: rgba(21, 21, 21, .80);
+  border: 1px solid rgba(255, 255, 255, .24);
+  color: #f2f2f2;
+  box-shadow: 0 0 13px rgba(255,255,255,.18), inset 0 0 12px rgba(255,255,255,.08);
+  font-weight: 900;
+  letter-spacing: .08em;
+  font-size: clamp(14px, 4.4vw, 20px);
+  text-transform: uppercase;
+}
+.ao-vivo-stamp.is-live,
+.ao-vivo-stamp.is-vinheta,
+.ao-vivo-stamp.is-connecting {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(154,8,22,.96), rgba(235,45,61,.92));
+  border-color: rgba(255, 184, 184, .55);
+  box-shadow: 0 0 18px rgba(255, 38, 56, .56), inset 0 0 12px rgba(255,255,255,.14);
+}
+.ao-vivo-stamp.is-connecting { background: linear-gradient(135deg, rgba(167,111,18,.96), rgba(244,177,50,.92)); }
+.ao-vivo-dot {
+  width: .72em;
+  height: .72em;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+  opacity: .86;
+}
+
+/* CONTADOR: bloco próprio para não grudar nos botões no mobile. */
+.android-countdown-card {
+  position: relative;
+  z-index: 10;
+  width: auto;
+  margin: clamp(12px, 3.4vw, 18px) clamp(14px, 4vw, 22px) 0;
+  padding: clamp(12px, 3.6vw, 18px);
+  border: 1px solid rgba(255, 239, 189, .80);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(23,22,19,.94), rgba(6,6,6,.96)),
+    radial-gradient(circle at 50% 0%, rgba(255, 199, 77, .16), transparent 70%);
+  box-shadow: 0 0 22px rgba(255, 204, 91, .28), inset 0 0 22px rgba(255, 255, 255, .06);
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+.countdown-kicker {
+  display: block;
+  color: #f3c85b;
+  font-weight: 900;
+  font-size: clamp(11px, 3vw, 15px);
+  letter-spacing: .18em;
+  margin-bottom: .55rem;
+}
+.countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(5px, 1.7vw, 10px); }
+.countdown-item {
+  min-height: clamp(54px, 14vw, 72px);
+  display: grid;
+  place-items: center;
+  padding: .26rem .12rem;
+  border-radius: 12px;
+  border: 1px solid rgba(222, 169, 66, .55);
+  background: rgba(13, 13, 13, .78);
+  box-shadow: inset 0 0 12px rgba(255,255,255,.07), 0 0 9px rgba(255,190,66,.12);
+}
+.countdown-item strong { font-size: clamp(23px, 7vw, 36px); line-height: 1; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,.55); }
+.countdown-item small { font-size: clamp(7px, 1.9vw, 10px); font-weight: 800; letter-spacing: .08em; color: #f3e7c5; }
+.countdown-date {
+  margin-top: .62rem;
+  padding-top: .48rem;
+  border-top: 1px solid rgba(230, 176, 68, .52);
+  font-weight: 900;
+  font-size: clamp(26px, 8vw, 40px);
+  line-height: .95;
+  color: #fffdf5;
+  text-shadow: 0 0 10px rgba(255,255,255,.35);
+}
+.countdown-date span { display: inline-block; color: #f3c85b; font-size: .60em; margin-left: .36rem; }
+
+/* BOTÕES: faixa própria, grande para dedo, sem sobrepor nada. */
+.android-choice-menu {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 2.4vw, 14px);
+  align-items: center;
+  padding: clamp(13px, 3.8vw, 20px) clamp(14px, 4vw, 22px);
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.98), rgba(5,5,5,.88)),
+    radial-gradient(circle at 50% 0%, rgba(244, 191, 80, .20), transparent 70%);
+}
+.flyer-choice-btn {
+  min-height: clamp(50px, 12.5vw, 62px);
+  border: 1px solid rgba(255, 229, 157, .78);
+  border-radius: 999px;
+  color: #fff6ca;
+  background: linear-gradient(135deg, rgba(71, 49, 17, .88), rgba(10,10,10,.78), rgba(153, 108, 30, .70));
+  box-shadow: 0 0 18px rgba(243, 191, 80, .40), inset 0 0 17px rgba(255,255,255,.08);
+  text-shadow: 0 0 9px rgba(255, 209, 97, .60);
+  font-weight: 900;
+  font-size: clamp(15px, 4.35vw, 20px);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.flyer-choice-btn.is-active,
+.flyer-choice-btn:active {
+  color: #12100a;
+  background: linear-gradient(135deg, #fff5c3, #d7a53d 58%, #7f5614);
+  box-shadow: 0 0 26px rgba(255, 210, 91, .80), inset 0 0 13px rgba(255,255,255,.35);
+}
+
+/* PROGRAMAÇÃO + VOLUME: separado dos botões e do rodapé. */
+.android-program-card {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(10px, 3vw, 14px);
+  align-items: center;
+  padding: 0 clamp(22px, 6.6vw, 38px) clamp(14px, 4vw, 20px);
+  background: linear-gradient(180deg, rgba(5,5,5,.88), rgba(0,0,0,.98));
+}
+.android-sunday {
+  width: min(100%, 330px);
+  justify-self: center;
+  height: clamp(78px, 20vw, 104px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0,0,0,.70);
+  border: 1px solid rgba(241, 188, 74, .54);
+  box-shadow: 0 0 23px rgba(255, 184, 55, .44);
+}
+.android-sunday img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.android-volume {
+  width: min(100%, 340px);
+  justify-self: center;
+  min-height: clamp(46px, 11.2vw, 56px);
+  display: flex;
+  align-items: center;
+  gap: .60rem;
+  padding: .38rem .62rem;
+  border-radius: 999px;
+  background: rgba(12, 12, 12, .88);
+  border: 1px solid rgba(243, 191, 80, .52);
+  box-shadow: 0 0 15px rgba(243, 191, 80, .31), inset 0 0 12px rgba(255,255,255,.05);
+}
+.flyer-volume-btn {
+  flex: 0 0 auto;
+  width: clamp(30px, 7.6vw, 38px);
+  height: clamp(30px, 7.6vw, 38px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 230, 168, .64);
+  background: rgba(0,0,0,.68);
+  color: #ffd877;
+  font-size: clamp(12px, 3vw, 16px);
+  line-height: 1;
+}
+.flyer-volume-range { width: 100%; accent-color: #f0c45c; }
+
+.android-genre-strip {
+  position: relative;
+  z-index: 10;
+  margin: 0 clamp(14px, 4vw, 22px) clamp(12px, 3.2vw, 16px);
+  padding: clamp(7px, 2.1vw, 10px) clamp(8px, 2.2vw, 12px);
+  border: 1px solid rgba(230, 176, 68, .56);
+  border-radius: 10px;
+  background: rgba(0,0,0,.88);
+  color: #ff1212;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .045em;
+  font-size: clamp(11px, 3.2vw, 15px);
+  line-height: 1.15;
+  text-shadow: 0 0 10px rgba(255, 0, 0, .72);
+}
+
+/* RODAPÉ: layout mobile próprio, sem invadir a arte. */
+.android-footer {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 3.5vw, 18px);
+  padding: clamp(13px, 4vw, 20px) clamp(16px, 4.8vw, 24px) clamp(18px, 5.2vw, 28px);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.96), rgba(0,0,0,1)),
+    radial-gradient(circle at 50% 0%, rgba(244, 191, 80, .12), transparent 60%);
+}
+.android-app-block,
+.android-brand-block {
+  display: grid;
+  justify-items: center;
+  gap: .45rem;
+}
+.text-ouca-app { max-width: min(58%, 190px); filter: drop-shadow(0 0 7px rgba(255,255,255,.45)); }
+.android-app-row {
+  width: min(100%, 330px);
+  display: grid;
+  grid-template-columns: 33% 1fr;
+  align-items: center;
+  gap: .50rem;
+}
+.android-store-stack { display: grid; gap: .36rem; }
+.float-link { border: 0; background: transparent; padding: 0; cursor: pointer; line-height: 0; }
+.logo-button,
+.icon-only,
+.image-badge {
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(0,0,0,.50);
+  box-shadow: 0 0 16px rgba(255, 196, 81, .46), inset 0 0 10px rgba(255,255,255,.05);
+  border: 1px solid rgba(241, 188, 74, .34);
+}
+.img-radios { width: 92%; height: auto; }
+.image-badge { height: clamp(30px, 7.8vw, 40px); padding: 3px 6px; border-radius: 9px; }
+.badge-img { width: 100%; height: 100%; object-fit: contain; }
+.brand-footer-text {
+  display: grid;
+  text-align: center;
+  line-height: 1.08;
+  text-shadow: 0 0 8px rgba(255,255,255,.35);
+}
+.brand-footer-site { color: #fff8df; font-weight: 900; font-size: clamp(15px, 4vw, 20px); }
+.brand-footer-slogan { color: #f2c85d; font-weight: 800; font-size: clamp(9px, 2.5vw, 13px); }
+.android-logo {
+  width: clamp(78px, 19vw, 106px);
+  height: clamp(78px, 19vw, 106px);
+  padding: 7px;
+}
+.img-site { width: 100%; height: 100%; object-fit: contain; }
+.android-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 3.1vw, 16px);
+}
+.icon-only { width: clamp(43px, 11vw, 58px); height: clamp(43px, 11vw, 58px); border-radius: 50%; }
+.social-img { width: 84%; height: 84%; object-fit: contain; }
+.hotspot-vinyl,
+.vinyl-led { display: none !important; }
+
+@media (min-width: 430px) {
+  .android-countdown-card { margin-left: 20px; margin-right: 20px; }
+}
+@media (max-width: 370px) {
+  .android-main { padding-left: 6px; padding-right: 6px; }
+  .android-stage { width: 100%; border-radius: 18px; }
+  .android-hero-card { height: 335px; }
+  .android-inner-title { letter-spacing: .14em; font-size: 9px; }
+  .countdown-grid { gap: 5px; }
+  .android-choice-menu { gap: 7px; padding-left: 10px; padding-right: 10px; }
+  .flyer-choice-btn { font-size: 14px; }
+  .android-app-row { grid-template-columns: 34% 1fr; }
+  .icon-only { width: 40px; height: 40px; }
+}
+@media (min-width: 700px) and (orientation: portrait) {
+  .android-stage { max-width: 580px; }
+  .android-hero-card { height: 500px; }
+}
+
+/* =========================================================
+   REV 1.3.1 - REFINO CIRÚRGICO DO RODAPÉ MOBILE
+   Correção: Google Play/App Store estavam grandes demais e
+   invadindo o bloco do site/logo no Android.
+   PC continua preservado pelo arquivo pc_original_regra.html.
+   ========================================================= */
+.android-footer {
+  gap: clamp(14px, 4vw, 20px) !important;
+  padding-top: clamp(16px, 4.8vw, 22px) !important;
+}
+
+.android-app-block {
+  width: 100%;
+  gap: clamp(8px, 2.6vw, 12px) !important;
+}
+
+.android-app-block .text-ouca-app {
+  max-width: min(54%, 172px) !important;
+  margin-bottom: 2px;
+}
+
+.android-app-row {
+  width: min(100%, 292px) !important;
+  grid-template-columns: clamp(66px, 18vw, 78px) clamp(142px, 41vw, 164px) !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: clamp(8px, 2.8vw, 12px) !important;
+}
+
+.android-app-row .logo-button {
+  width: clamp(66px, 18vw, 78px) !important;
+  height: clamp(66px, 18vw, 78px) !important;
+  overflow: hidden !important;
+}
+
+.android-store-stack {
+  width: clamp(142px, 41vw, 164px) !important;
+  gap: clamp(5px, 1.6vw, 7px) !important;
+}
+
+.android-store-stack .image-badge {
+  width: 100% !important;
+  height: clamp(28px, 7.2vw, 34px) !important;
+  padding: 2px 5px !important;
+  overflow: hidden !important;
+  border-radius: 9px !important;
+}
+
+.float-img,
+.badge-img,
+.img-radios,
+.img-site,
+.social-img {
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+.android-store-stack .badge-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.android-app-row .img-radios {
+  width: 88% !important;
+  height: 88% !important;
+  object-fit: contain !important;
+}
+
+.android-brand-block {
+  margin-top: clamp(4px, 1.6vw, 8px) !important;
+  padding-top: clamp(4px, 1.5vw, 8px) !important;
+  gap: clamp(8px, 2.6vw, 12px) !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.brand-footer-text {
+  position: relative !important;
+  z-index: 3 !important;
+  width: 100% !important;
+  max-width: 330px !important;
+  margin-inline: auto !important;
+}
+
+.brand-footer-site {
+  font-size: clamp(14px, 3.8vw, 18px) !important;
+}
+
+.brand-footer-slogan {
+  font-size: clamp(8px, 2.4vw, 12px) !important;
+}
+
+.android-logo {
+  width: clamp(70px, 18vw, 88px) !important;
+  height: clamp(70px, 18vw, 88px) !important;
+  padding: 6px !important;
+}
+
+.android-social-row {
+  margin-top: clamp(2px, 1vw, 6px) !important;
+  gap: clamp(12px, 3.5vw, 18px) !important;
+}
+
+.icon-only {
+  width: clamp(42px, 10.6vw, 54px) !important;
+  height: clamp(42px, 10.6vw, 54px) !important;
+}
+
+@media (max-width: 370px) {
+  .android-app-row {
+    width: min(100%, 272px) !important;
+    grid-template-columns: 62px 136px !important;
+    gap: 8px !important;
+  }
+  .android-app-row .logo-button {
+    width: 62px !important;
+    height: 62px !important;
+  }
+  .android-store-stack {
+    width: 136px !important;
+  }
+  .android-store-stack .image-badge {
+    height: 27px !important;
+  }
+  .brand-footer-site {
+    font-size: 13px !important;
+  }
+}

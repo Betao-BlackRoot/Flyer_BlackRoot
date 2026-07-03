@@ -1,0 +1,111 @@
+GUIA RÁPIDO PARA EDITAR NO VS CODE
+===================================
+
+1) ARQUIVOS PRINCIPAIS
+----------------------
+index.html
+- Estrutura da página.
+- Mostra onde cada elemento existe.
+- Se você remover um id ou class, pode quebrar CSS/JS.
+
+css/style.css
+- Aparência, posição, tamanho, brilho, responsivo e animações.
+- A regra que está mais embaixo geralmente ganha.
+- Para ajuste visual, prefira criar um bloco no final do CSS.
+
+js/app.js
+- Funcionamento do player.
+- Clique no vinil.
+- Botões Rádio/Chamada.
+- Status PAUSADO / VINHETA / CONECTANDO / AO VIVO / ERRO.
+
+assets/
+- Imagens, áudio e vídeo usados pelo projeto.
+
+
+2) ONDE MEXER NO SELO AO VIVO
+-----------------------------
+HTML:
+index.html
+Procure:
+<div class="ao-vivo-stamp is-paused" id="aoVivoStamp">
+
+JS:
+js/app.js
+Procure:
+function atualizarSeloAoVivo(status)
+
+Textos atuais:
+- live        -> AO VIVO
+- vinheta     -> VINHETA
+- pausado     -> PAUSADO
+- conectando  -> CONECTANDO
+- erro        -> ERRO
+
+CSS:
+css/style.css
+Procure:
+AJUSTE NATTHAN - SELO DINÂMICO DO FLYER
+
+Estados visuais:
+.ao-vivo-stamp.is-live
+.ao-vivo-stamp.is-vinheta
+.ao-vivo-stamp.is-paused
+.ao-vivo-stamp.is-connecting
+.ao-vivo-stamp.is-error
+
+
+3) FLUXO DO PLAYER
+------------------
+Usuário clica no vinil:
+- Abre menu Rádio / Chamada.
+
+Usuário clica em Chamada:
+- Selo vira VINHETA.
+- Toca assets/audio/chamada.mp3.
+- Quando termina, chama tocarRadio().
+
+Usuário clica em Rádio:
+- Selo vira CONECTANDO.
+- O navegador tenta tocar a rádio.
+- Quando a rádio realmente toca, dispara o evento "playing".
+- Só nesse momento o selo vira AO VIVO.
+
+Usuário pausa:
+- Selo vira PAUSADO.
+
+Erro no áudio:
+- Selo vira ERRO.
+
+
+4) COMO MOVER UM ELEMENTO NO FLYER
+----------------------------------
+No CSS, procure a classe do elemento e altere:
+left: move para direita/esquerda
+right: prende pelo lado direito
+top: move para cima/baixo
+width: altera largura
+ez-index: controla quem fica na frente
+
+Exemplo:
+.ao-vivo-stamp {
+  top: 7.5% !important;
+  left: 5.5% !important;
+}
+
+Quanto maior o top, mais para baixo.
+Quanto maior o left, mais para direita.
+
+
+5) BOA PRÁTICA PARA NÃO QUEBRAR
+-------------------------------
+Não apague blocos antigos agora.
+Crie novos ajustes no final do style.css assim:
+
+/* AJUSTES NATTHAN - V27 */
+.sua-classe-aqui {
+  propriedade: valor !important;
+}
+
+Isso preserva o que já funciona.
+
