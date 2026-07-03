@@ -1,0 +1,7 @@
+REV 1.3.9
+
+Ajuste exclusivo no Android:
+- move a caixa AO VIVO / PAUSADO / CHAMADA para a area marcada no print, parte inferior da capa mobile.
+
+Nada mais foi alterado.
+PC permanece como REGRA.
