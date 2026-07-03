@@ -1,0 +1,3 @@
+VERSÃO 1.3.3
+Ajuste cirúrgico somente no Android: Google Play e App Store menores, centralizados e 100% visíveis.
+PC original preservado como REGRA.

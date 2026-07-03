@@ -1,0 +1,13 @@
+VERSÃO 1.3.1 - PC REGRA + ANDROID PRO - RODAPÉ MOBILE OK
+
+ALTERAÇÃO DESTA REVISÃO:
+- Ajuste cirúrgico apenas no rodapé da versão Android.
+- Google Play e App Store foram reduzidos e travados dentro do bloco "Ouça Pelo App".
+- O texto www.radioblackinlove.com e o logo não ficam mais atrás dos botões de app.
+- PC continua preservado como REGRA.
+
+COMO SUBIR NO GITHUB:
+1. Extraia o ZIP.
+2. Envie todos os arquivos e pastas extraídos para o repositório.
+3. Aguarde alguns minutos.
+4. Teste no celular em aba anônima ou limpando cache.

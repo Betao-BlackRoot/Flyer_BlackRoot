@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Admin - Configurações</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <section id="loginBox" class="card login-card">
+      <h1>BLACK ADMIN</h1>
+      <p>Área local de configuração da landing page.</p>
+      <label>Senha de acesso</label>
+      <input id="passwordInput" type="password" placeholder="Digite a senha" />
+      <button id="loginBtn">Entrar</button>
+      <small>Senha padrão: <b>BlackInLove@2026</b>. Altere no arquivo <b>admin/admin.js</b>.</small>
+    </section>
+
+    <section id="panelBox" class="card panel-card hidden">
+      <div class="panel-head">
+        <div>
+          <h1>BLACK ADMIN</h1>
+          <p>Edite os dados e baixe o novo <b>js/config.js</b>.</p>
+        </div>
+        <a href="../index.html" target="_blank">Abrir Landing</a>
+      </div>
+
+      <div class="grid">
+        <label>Stream da Rádio<input id="streamUrl" /></label>
+        <label>Status da Rádio
+          <select id="radioStatus"><option value="online">online</option><option value="offline">offline</option></select>
+        </label>
+        <label>Link Reprise / Playlist YouTube<input id="reprise" /></label>
+        <label>Link YouTube Canal<input id="youtube" /></label>
+        <label>Instagram<input id="instagram" /></label>
+        <label>Facebook<input id="facebook" /></label>
+        <label>WhatsApp<input id="whatsapp" /></label>
+        <label>Site<input id="site" /></label>
+        <label>App Radios<input id="appRadios" /></label>
+        <label>Google Play<input id="appAndroid" /></label>
+        <label>App Store<input id="appApple" /></label>
+        <label>Rádio Offline<input id="radioOffline" /></label>
+      </div>
+
+      <h2>Contador</h2>
+      <div class="grid small-grid">
+        <label>Ano<input id="ano" type="number" /></label>
+        <label>Mês<input id="mes" type="number" /></label>
+        <label>Dia<input id="dia" type="number" /></label>
+        <label>Hora<input id="hora" type="number" /></label>
+        <label>Minuto<input id="minuto" type="number" /></label>
+      </div>
+
+      <div class="actions">
+        <button id="downloadBtn">Baixar config.js</button>
+        <button id="copyBtn" class="secondary">Copiar conteúdo</button>
+      </div>
+
+      <div class="notice">
+        <b>Como usar:</b> baixe o arquivo gerado e substitua o arquivo <b>js/config.js</b> no projeto/GitHub.
+        Este painel é estático; ele não salva direto no GitHub sozinho.
+      </div>
+      <textarea id="output" readonly></textarea>
+    </section>
+  </main>
+  <script src="../js/config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
