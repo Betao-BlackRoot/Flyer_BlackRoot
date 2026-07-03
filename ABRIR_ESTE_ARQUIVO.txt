@@ -1,9 +1,0 @@
-NATTHAN - V2 REAL
-
-Abra o arquivo index.html desta pasta: Projeto_Flayer_LED_GIRANDO_V2_REAL
-
-Importante:
-1. Não abra a pasta antiga Projeto_Flayer_LED_GIRANDO_CORRIGIDO, porque ela é a versão anterior.
-2. Se o navegador estiver aberto, aperte CTRL + F5 para limpar o cache.
-3. A correção está no final do arquivo css/style.css, no bloco:
-   CORREÇÃO DEFINITIVA NATTHAN - LED GIRANDO VISÍVEL REAL
