@@ -1,8 +1,0 @@
-MASTER v1.1.6 - MOBILE CLEAN FIX
-
-Correção focada apenas no modo celular vertical:
-- Botões Rádio / Chamada / Reprise com mais respiro.
-- Caixa Todos os Domingos reduzida e posicionada sem colar na faixa do rodapé.
-- Volume ajustado junto com a caixa.
-- Rodapé reposicionado para evitar sobreposição.
-- Desktop preservado.
