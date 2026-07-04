@@ -1,0 +1,47 @@
+LANDING EXPERIENCE BLACK - FINAL V9
+
+Ajustes desta versão:
+- Caixa "Todos os domingos":
+  - a borda continua sempre visível
+  - a luz corre pela borda sem apagar
+  - cores mantidas em dourado, âmbar e laranja/vermelho suave
+- Botões do rodapé:
+  - continuam flutuantes
+  - agora usam ícones oficiais / mais fiéis
+  - brilho agora se movimenta para chamar atenção
+- O restante foi mantido.
+- O toca-discos continua para ajuste posterior.
+
+Teste:
+1. Extraia em pasta limpa.
+2. Abra a pasta Landing_Experience_Black_FINAL_V9 no VS Code.
+3. Botão direito em index.html.
+4. Open with Live Server.
+5. Aperte CTRL + F5.
+
+
+Versão V10:
+- caixa "Todos os domingos" reposicionada um pouco mais para baixo e para o canto do flyer;
+- botão do site trocado pelo logo da Black in Love;
+- botão da Radios.com trocado pelo logo enviado;
+- Google Play e App Store usando badges oficiais enviados;
+- efeitos de brilho e flutuação mantidos.
+
+
+Atualização V11:
+- Caixa "Todos os Domingos" substituída pela arte enviada.
+- Ícones oficiais de Facebook, Instagram, WhatsApp e YouTube aplicados.
+- Botão Radios.com ampliado.
+
+
+Atualização V12:
+- Botões do rodapé padronizados com ícones/imagens oficiais.
+- Botão Radios.com maior e com escrita Radios.com.
+- Google Play e App Store mais fiéis ao exemplo.
+- Redes sociais com imagens enviadas e brilho/flutuação mantidos.
+- Logo Black in Love mantido como botão do site.
+
+
+Atualização V13:
+- Caixa "Todos os Domingos" com efeito animado da versão 10 restaurado.
+- Caixa levemente mais esticada em formato retangular.
